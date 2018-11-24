@@ -16,67 +16,72 @@ client.on('ready', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.on('message', message => {
-    if (message.content === 'بووم') {
-          let count = 1;
-          let ecount = 1;
-          for(let x = 1; x < 99999; x++) {
-            message.channel.send(`**كسمك يا ابن المتناكة عل كسمكم الي هيا الشرموطة بتاعتي نايكم اانا يسعودين يمتانيك وربي مصر نايككم يبتوع الكبسة انتم احنا نايكنكم مش احنا طعمية انتم كبسة كسمكم يا ولاد المرة المنيوكة خاضعنكم احنا يا ولادا العرص نايكنكم سبام يامتانيك احلا نيكة يا ولاد العرص روحو ومتجوش تاني تمام المعلم عليكم @! -,@.₄₅# @here 
-$%@#%^%%&#^%@^$#$%&$%^#@#%&%%@#%&&&&&&&&%$^*#^%#^$#$^$&%*$*%^$%$^#%%%&%^**%^%(%(%*(^&%&%$&%^*%%^*%&#$^#^$*%#^&**`)
-              .then(m => {
-                count++;
-              })
-              
-            }
-          }
+client.on("message", message => {
+    var prefix = "$";
+        if (message.author.id === client.user.id) return;
+        if (message.guild) {
+       let embed = new Discord.RichEmbed()
+        let args = message.content.split(' ').slice(1).join(' ');
+    if(message.content.split(' ')[0] == prefix + 'bc') {
+        if (!args[1]) {
+    message.channel.send("**bc <message>**");
+    return;
+    }
+            message.guild.members.forEach(m => {
+       if(!message.member.hasPermission('ADMINISTRATOR')) return;
+                m.send(args);
+            });
+            const AziRo = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)   
+            .setTitle('✅| جاري ارسال رسالتك ') 
+            .addBlankField(true)
+            .addField('♨| عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
+            .addField('📝| الرسالة ', args)
+            .setColor('RANDOM')  
+            message.channel.sendEmbed(AziRo);          
+        }
+        } else {
+            return;
+        }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
